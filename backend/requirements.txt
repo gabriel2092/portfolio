@@ -1,0 +1,14 @@
+fastapi
+uvicorn[standard]
+pydantic
+pydantic-settings
+python-dotenv
+httpx
+python-multipart
+
+# LLM Providers
+anthropic  # Optional: for cloud API
+ollama     # For local open source models
+
+# Date handling
+python-dateutil
