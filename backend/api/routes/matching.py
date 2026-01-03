@@ -43,7 +43,7 @@ async def match_patient(
 
     This endpoint:
     1. Searches for trials matching the condition
-    2. Uses Claude AI to match the patient against each trial's eligibility criteria
+    2. Uses Ollama to match the patient against each trial's eligibility criteria
     3. Returns ranked results with match scores and explanations
 
     Example request body:

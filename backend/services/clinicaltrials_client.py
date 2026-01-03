@@ -2,6 +2,7 @@
 Client for ClinicalTrials.gov API v2
 Documentation: https://clinicaltrials.gov/data-api/api
 """
+
 import httpx
 import logging
 from typing import List, Optional, Dict, Any
@@ -136,7 +137,10 @@ class ClinicalTrialsClient:
         params = {k: v for k, v in params.items() if v is not None}
 
         try:
-            async with httpx.AsyncClient(timeout=30.0) as client:
+            headers = {
+                "User-Agent": "ClinicalTrialsMatchingApp/1.0 (Educational/Research Purpose)"
+            }
+            async with httpx.AsyncClient(timeout=30.0, headers=headers) as client:
                 # Updated API v2 endpoint
                 url = f"{self.base_url}/studies"
                 logger.info(f"Fetching trials from ClinicalTrials.gov: {url}")
@@ -238,7 +242,10 @@ class ClinicalTrialsClient:
             return ClinicalTrial(**cached_data)
 
         try:
-            async with httpx.AsyncClient(timeout=30.0) as client:
+            headers = {
+                "User-Agent": "ClinicalTrialsMatchingApp/1.0 (Educational/Research Purpose)"
+            }
+            async with httpx.AsyncClient(timeout=30.0, headers=headers) as client:
                 url = f"{self.base_url}/studies/{nct_id}"
                 logger.info(f"Fetching trial {nct_id}")
 
